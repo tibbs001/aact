@@ -1,0 +1,5 @@
+= AACT
+
+Aggregates data from clinicaltrials.gov
+
+This project rocks and uses MIT-LICENSE.
