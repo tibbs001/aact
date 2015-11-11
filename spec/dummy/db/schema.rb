@@ -64,12 +64,16 @@ ActiveRecord::Schema.define(version: 20150629193710) do
     t.string "nct_id"
   end
 
+  add_index "brief_summaries", ["nct_id"], name: "index_brief_summaries_on_nct_id", using: :btree
+
   create_table "browse_conditions", force: :cascade do |t|
     t.string   "mesh_term"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "nct_id"
   end
+
+  add_index "browse_conditions", ["nct_id"], name: "index_browse_conditions_on_nct_id", using: :btree
 
   create_table "browse_interventions", force: :cascade do |t|
     t.string   "mesh_term"
@@ -78,12 +82,16 @@ ActiveRecord::Schema.define(version: 20150629193710) do
     t.string   "nct_id"
   end
 
+  add_index "browse_interventions", ["nct_id"], name: "index_browse_interventions_on_nct_id", using: :btree
+
   create_table "conditions", force: :cascade do |t|
     t.string   "condition_name"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.string   "nct_id"
   end
+
+  add_index "conditions", ["nct_id"], name: "index_conditions_on_nct_id", using: :btree
 
   create_table "data_definitions", force: :cascade do |t|
     t.string "aact_column"
@@ -103,10 +111,14 @@ ActiveRecord::Schema.define(version: 20150629193710) do
     t.string "nct_id"
   end
 
+  add_index "designs", ["nct_id"], name: "index_designs_on_nct_id", using: :btree
+
   create_table "detailed_descriptions", force: :cascade do |t|
     t.text   "description"
     t.string "nct_id"
   end
+
+  add_index "detailed_descriptions", ["nct_id"], name: "index_detailed_descriptions_on_nct_id", using: :btree
 
   create_table "drop_withdrawals", force: :cascade do |t|
     t.string  "ctgov_group_id"
@@ -128,6 +140,8 @@ ActiveRecord::Schema.define(version: 20150629193710) do
     t.string "nct_id"
   end
 
+  add_index "eligibilities", ["nct_id"], name: "index_eligibilities_on_nct_id", using: :btree
+
   create_table "expected_groups", force: :cascade do |t|
     t.string   "ctgov_group_id"
     t.integer  "ctgov_group_enumerator"
@@ -139,6 +153,8 @@ ActiveRecord::Schema.define(version: 20150629193710) do
     t.string   "nct_id"
   end
 
+  add_index "expected_groups", ["nct_id"], name: "index_expected_groups_on_nct_id", using: :btree
+
   create_table "expected_outcomes", force: :cascade do |t|
     t.string "outcome_type"
     t.string "title"
@@ -149,6 +165,8 @@ ActiveRecord::Schema.define(version: 20150629193710) do
     t.text   "description"
     t.string "nct_id"
   end
+
+  add_index "expected_outcomes", ["nct_id"], name: "index_expected_outcomes_on_nct_id", using: :btree
 
   create_table "facilities", force: :cascade do |t|
     t.string   "name"
@@ -170,6 +188,8 @@ ActiveRecord::Schema.define(version: 20150629193710) do
     t.string   "nct_id"
   end
 
+  add_index "facilities", ["nct_id"], name: "index_facilities_on_nct_id", using: :btree
+
   create_table "intervention_arm_group_labels", force: :cascade do |t|
     t.string   "label"
     t.datetime "created_at",      null: false
@@ -178,6 +198,9 @@ ActiveRecord::Schema.define(version: 20150629193710) do
     t.string   "intervention_id"
   end
 
+  add_index "intervention_arm_group_labels", ["intervention_id"], name: "index_intervention_arm_group_labels_on_intervention_id", using: :btree
+  add_index "intervention_arm_group_labels", ["nct_id"], name: "index_intervention_arm_group_labels_on_nct_id", using: :btree
+
   create_table "intervention_other_names", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at",      null: false
@@ -185,6 +208,9 @@ ActiveRecord::Schema.define(version: 20150629193710) do
     t.string   "nct_id"
     t.string   "intervention_id"
   end
+
+  add_index "intervention_other_names", ["intervention_id"], name: "index_intervention_other_names_on_intervention_id", using: :btree
+  add_index "intervention_other_names", ["nct_id"], name: "index_intervention_other_names_on_nct_id", using: :btree
 
   create_table "interventions", force: :cascade do |t|
     t.string   "intervention_type"
@@ -195,6 +221,8 @@ ActiveRecord::Schema.define(version: 20150629193710) do
     t.string   "nct_id"
   end
 
+  add_index "interventions", ["nct_id"], name: "index_interventions_on_nct_id", using: :btree
+
   create_table "keywords", force: :cascade do |t|
     t.string   "keyword"
     t.datetime "created_at", null: false
@@ -202,11 +230,15 @@ ActiveRecord::Schema.define(version: 20150629193710) do
     t.string   "nct_id"
   end
 
+  add_index "keywords", ["nct_id"], name: "index_keywords_on_nct_id", using: :btree
+
   create_table "links", force: :cascade do |t|
     t.string "url"
     t.string "description"
     t.string "nct_id"
   end
+
+  add_index "links", ["nct_id"], name: "index_links_on_nct_id", using: :btree
 
   create_table "load_events", force: :cascade do |t|
     t.string   "nct_id"
@@ -219,8 +251,11 @@ ActiveRecord::Schema.define(version: 20150629193710) do
 
   create_table "location_countries", force: :cascade do |t|
     t.string "country"
+    t.string "removed"
     t.string "nct_id"
   end
+
+  add_index "location_countries", ["nct_id"], name: "index_location_countries_on_nct_id", using: :btree
 
   create_table "milestones", force: :cascade do |t|
     t.string  "ctgov_group_id"
@@ -279,10 +314,14 @@ ActiveRecord::Schema.define(version: 20150629193710) do
     t.string "nct_id"
   end
 
+  add_index "overall_officials", ["nct_id"], name: "index_overall_officials_on_nct_id", using: :btree
+
   create_table "oversight_authorities", force: :cascade do |t|
     t.string "name"
     t.string "nct_id"
   end
+
+  add_index "oversight_authorities", ["nct_id"], name: "index_oversight_authorities_on_nct_id", using: :btree
 
   create_table "periods", force: :cascade do |t|
     t.string "title"
@@ -322,6 +361,8 @@ ActiveRecord::Schema.define(version: 20150629193710) do
     t.string "nct_id"
   end
 
+  add_index "responsible_parties", ["nct_id"], name: "index_responsible_parties_on_nct_id", using: :btree
+
   create_table "result_agreements", force: :cascade do |t|
     t.string "pi_employee"
     t.string "agreement"
@@ -348,12 +389,16 @@ ActiveRecord::Schema.define(version: 20150629193710) do
     t.string "nct_id"
   end
 
+  add_index "secondary_ids", ["nct_id"], name: "index_secondary_ids_on_nct_id", using: :btree
+
   create_table "sponsors", force: :cascade do |t|
     t.string "sponsor_type"
     t.string "agency"
     t.string "agency_class"
     t.string "nct_id"
   end
+
+  add_index "sponsors", ["nct_id"], name: "index_sponsors_on_nct_id", using: :btree
 
   create_table "studies", id: false, force: :cascade do |t|
     t.string   "nct_id"
@@ -404,11 +449,16 @@ ActiveRecord::Schema.define(version: 20150629193710) do
     t.datetime "updated_at",                      null: false
   end
 
+  add_index "studies", ["nct_id"], name: "index_studies_on_nct_id", using: :btree
+  add_index "studies", ["study_type"], name: "index_studies_on_study_type", using: :btree
+
   create_table "study_references", force: :cascade do |t|
     t.string "citation"
     t.string "pmid"
     t.string "reference_type"
     t.string "nct_id"
   end
+
+  add_index "study_references", ["nct_id"], name: "index_study_references_on_nct_id", using: :btree
 
 end

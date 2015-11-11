@@ -2,6 +2,7 @@ require 'csv'
 module Aact
 class Study < ActiveRecord::Base
   self.table_name='studies'
+	establish_connection "aact_#{Rails.env}".to_sym
 
   self.primary_key = 'nct_id'
   has_one  :brief_summary,        :foreign_key => 'nct_id', dependent: :destroy
