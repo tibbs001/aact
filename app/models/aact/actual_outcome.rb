@@ -6,9 +6,8 @@ module Aact
 		has_many :outcome_measures
 		has_many :outcome_analyses
 
-		def self.create_all_from(options={})
-			opts=options
-			all=options[:xml].xpath('//clinical_results').xpath("outcome_list").xpath('outcome')
+		def self.create_all_from(opts={})
+			all=opts[:xml].xpath('//clinical_results').xpath("outcome_list").xpath('outcome')
 			col=[]
 			xml=all.pop
 			while xml
