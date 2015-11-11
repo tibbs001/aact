@@ -20,6 +20,17 @@ development:
   host: localhost
   port: 5432
 
+aact_development:
+  adapter: postgresql
+  encoding: unicode
+  database: aact_development
+  pool: 15
+  username: aact
+  password: aact_rocks
+  template: template0
+  host: localhost
+  port: 5432
+
 production:
   adapter: postgresql
   encoding: unicode
