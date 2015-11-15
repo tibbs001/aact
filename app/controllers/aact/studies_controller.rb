@@ -7,10 +7,10 @@ class StudiesController < ApplicationController
   def index
     #sample_ids.each {|x| @studies << Study.find_by_nct_id(x)}
     #@studies
-    #@studies=Study.completed_since(Date.today-100.days)
+    @studies=Study.completed_since(Date.today-100.days)
     #@studies=Study.sponsored_by('Duke')
     @definitions=Aact::DataDefinition.all
-    @studies=[Aact::Study.find_by_nct_id('NCT01132846')]
+    #@studies=[Aact::Study.find_by_nct_id('NCT01132846')]
     #@studies=Study.all
   end
 
