@@ -4,10 +4,10 @@ module Aact
       nct_id='NCT02028676'
       study=Asker.new.create_study(nct_id)
       expect(study.interventions.size).to eq(9)
-      i=study.interventions.select{|m|m.intervention_name=='Clinically Driven Monitoring (CDM)'}.first
+      i=study.interventions.select{|m|m.name=='Clinically Driven Monitoring (CDM)'}.first
       expect(i.intervention_type).to eq('Other')
       expect(i.other_names.size).to eq(0)
-      i=study.interventions.select{|m|m.intervention_name=='Arm B: ZDV+ABC+3TC+NNRTI-&gt;ABC+3TC+NNRTI maintenance'}.first
+      i=study.interventions.select{|m|m.name=='Arm B: ZDV+ABC+3TC+NNRTI-&gt;ABC+3TC+NNRTI maintenance'}.first
       expect(i.intervention_type).to eq('Drug')
       expect(i.description).to eq("Children initiated ART using an induction-maintenance approach, starting with open-label four-drug lamivudine, abacavir, NNRTI, plus zidovudine for 36 weeks, then open-label lamivudine, abacavir, plus NNRTI subsequently. The NNRTI (nevirapine or efavirenz) was chosen by clinicians according to local availability and age.")
       expect(i.other_names.size).to eq(8)

@@ -7,14 +7,14 @@ class LocationCountry < StudyRelationship
   end
 
   def self.create_all_from(opts)
-    xml_entries(opts).children.collect{|xml| 
+    xml_entries(opts).children.collect{|xml|
       opts[:xml]=xml
       create_from(opts) if xml.name='country' and !trim(xml.text).blank?
     }.compact
   end
 
   def attribs
-    {:country=>xml.text}
+    {:name=>xml.text}
   end
 
 end

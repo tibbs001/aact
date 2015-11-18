@@ -107,7 +107,7 @@ module Aact
       nct_id='NCT02028676'  # study with rich set of outcomes data
       study=Asker.new.create_study(nct_id)
       expect(study.nct_id).to eq(nct_id)
-      expect(study.location_countries.map(&:country)).to include('Uganda')
+      expect(study.location_countries.map(&:name)).to include('Uganda')
       expect(study.expected_groups.size).to eq(9)
       expect(study.groups.size).to eq(9)
 
@@ -286,7 +286,7 @@ module Aact
       expect(study.study_type).to eq('Interventional')
       expect(study.location_countries.size).to eq(1)
       expect(study.location_countries.first.nct_id).to eq(nct_id)
-      expect(study.location_countries.first.country).to eq('United States')
+      expect(study.location_countries.first.name).to eq('United States')
       expect(study.oversight_authorities.first.nct_id).to eq(nct_id)
       expect(study.oversight_authorities.size).to eq(2)
       expect(study.oversight_authorities.map(&:name)).to include('United States: Federal Government')
@@ -322,7 +322,7 @@ module Aact
       expect(study.references.map(&:pmid)).to include('20124139')
       expect(study.responsible_parties.first.nct_id).to eq(nct_id)
       expect(study.responsible_parties.size).to eq(1)
-      expect(study.responsible_parties.map(&:investigator_full_name)).to include('Jack Yanovski, M.D.')
+      expect(study.responsible_parties.map(&:name)).to include('Jack Yanovski, M.D.')
       expect(study.sponsors.first.nct_id).to eq(nct_id)
       expect(study.sponsors.size).to eq(2)
       expect(study.sponsors.select{|x|x.sponsor_type=='lead'}.first.agency).to eq('Jack Yanovski, M.D.')

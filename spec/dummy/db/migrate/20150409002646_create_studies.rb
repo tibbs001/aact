@@ -86,20 +86,22 @@ class CreateStudies < ActiveRecord::Migration
 		add_index :expected_groups, :nct_id
 
     create_table :conditions do |t|
-      t.string  :condition_name
+      t.string  :name
       t.timestamps null: false
     end
     add_column :conditions, :nct_id, :string, references: :studies
 		add_index :conditions, :nct_id
+		add_index :conditions, :name
 
     create_table :interventions do |t|
       t.string  :intervention_type
-      t.string  :intervention_name
+      t.string  :name
       t.string  :description
       t.timestamps null: false
     end
     add_column :interventions, :nct_id, :string, references: :studies
 		add_index :interventions, :nct_id
+		add_index :interventions, :name
 
     create_table :intervention_other_names do |t|
       t.string  :name
@@ -108,6 +110,7 @@ class CreateStudies < ActiveRecord::Migration
     add_column :intervention_other_names, :nct_id, :string, references: :studies
     add_column :intervention_other_names, :intervention_id, :string, references: :studies
 		add_index :intervention_other_names, :nct_id
+		add_index :intervention_other_names, :name
 		add_index :intervention_other_names, :intervention_id
 
     create_table :intervention_arm_group_labels do |t|
@@ -120,11 +123,12 @@ class CreateStudies < ActiveRecord::Migration
 		add_index :intervention_arm_group_labels, :intervention_id
 
     create_table :keywords do |t|
-      t.string :keyword
+      t.string :name
       t.timestamps null: false
     end
     add_column :keywords, :nct_id, :string, references: :studies
 		add_index :keywords, :nct_id
+		add_index :keywords, :name
 
     create_table :browse_conditions do |t|
       t.string :mesh_term
@@ -162,9 +166,9 @@ class CreateStudies < ActiveRecord::Migration
 
     create_table :responsible_parties do |t|
       t.string :responsible_party_type
-      t.string :investigator_affiliation
-      t.string :investigator_full_name
-      t.string :investigator_title
+      t.string :affiliation
+      t.string :name
+      t.string :title
     end
     add_column :responsible_parties, :nct_id, :string, references: :studies
 		add_index :responsible_parties, :nct_id
@@ -176,11 +180,12 @@ class CreateStudies < ActiveRecord::Migration
 		add_index :designs, :nct_id
 
     create_table :location_countries do |t|
-      t.string :country
+      t.string :name
       t.string :removed
     end
     add_column :location_countries, :nct_id, :string, references: :studies
 		add_index :location_countries, :nct_id
+		add_index :location_countries, :name
 
     create_table :sponsors do |t|
       t.string :sponsor_type

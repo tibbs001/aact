@@ -85,12 +85,13 @@ ActiveRecord::Schema.define(version: 20150629193710) do
   add_index "browse_interventions", ["nct_id"], name: "index_browse_interventions_on_nct_id", using: :btree
 
   create_table "conditions", force: :cascade do |t|
-    t.string   "condition_name"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string   "nct_id"
   end
 
+  add_index "conditions", ["name"], name: "index_conditions_on_name", using: :btree
   add_index "conditions", ["nct_id"], name: "index_conditions_on_nct_id", using: :btree
 
   create_table "data_definitions", force: :cascade do |t|
@@ -210,26 +211,29 @@ ActiveRecord::Schema.define(version: 20150629193710) do
   end
 
   add_index "intervention_other_names", ["intervention_id"], name: "index_intervention_other_names_on_intervention_id", using: :btree
+  add_index "intervention_other_names", ["name"], name: "index_intervention_other_names_on_name", using: :btree
   add_index "intervention_other_names", ["nct_id"], name: "index_intervention_other_names_on_nct_id", using: :btree
 
   create_table "interventions", force: :cascade do |t|
     t.string   "intervention_type"
-    t.string   "intervention_name"
+    t.string   "name"
     t.string   "description"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.string   "nct_id"
   end
 
+  add_index "interventions", ["name"], name: "index_interventions_on_name", using: :btree
   add_index "interventions", ["nct_id"], name: "index_interventions_on_nct_id", using: :btree
 
   create_table "keywords", force: :cascade do |t|
-    t.string   "keyword"
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "nct_id"
   end
 
+  add_index "keywords", ["name"], name: "index_keywords_on_name", using: :btree
   add_index "keywords", ["nct_id"], name: "index_keywords_on_nct_id", using: :btree
 
   create_table "links", force: :cascade do |t|
@@ -250,11 +254,12 @@ ActiveRecord::Schema.define(version: 20150629193710) do
   end
 
   create_table "location_countries", force: :cascade do |t|
-    t.string "country"
+    t.string "name"
     t.string "removed"
     t.string "nct_id"
   end
 
+  add_index "location_countries", ["name"], name: "index_location_countries_on_name", using: :btree
   add_index "location_countries", ["nct_id"], name: "index_location_countries_on_nct_id", using: :btree
 
   create_table "milestones", force: :cascade do |t|
@@ -355,9 +360,9 @@ ActiveRecord::Schema.define(version: 20150629193710) do
 
   create_table "responsible_parties", force: :cascade do |t|
     t.string "responsible_party_type"
-    t.string "investigator_affiliation"
-    t.string "investigator_full_name"
-    t.string "investigator_title"
+    t.string "affiliation"
+    t.string "name"
+    t.string "title"
     t.string "nct_id"
   end
 

@@ -5,7 +5,7 @@ class Intervention < StudyRelationship
   has_many :intervention_other_names
 
   def self.create_all_from(opts)
-    opts[:xml].xpath("//intervention").collect{|xml| 
+    opts[:xml].xpath("//intervention").collect{|xml|
       opts[:xml]=xml
       create_from(opts)
     }
@@ -14,15 +14,11 @@ class Intervention < StudyRelationship
   def attribs
     {
      :intervention_type=>get('intervention_type'),
-     :intervention_name=>get('intervention_name'),
+     :name=>get('intervention_name'),
      :description=>get('description'),
      :intervention_arm_group_labels=>InterventionArmGroupLabel.create_all_from(opts),
      :intervention_other_names=>InterventionOtherName.create_all_from(opts)
     }
-  end
-
-  def name
-    intervention_name
   end
 
   def other_names
