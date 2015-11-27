@@ -11,7 +11,7 @@ class CreateResults < ActiveRecord::Migration
 
     create_table :result_agreements do |t|
       t.string :pi_employee
-      t.string :agreement
+      t.text   :agreement
       t.string :agreement_type
     end
     add_column :result_agreements, :nct_id, :string, references: :studies
@@ -48,7 +48,7 @@ class CreateResults < ActiveRecord::Migration
       t.string  :ctgov_group_id
       t.integer :ctgov_group_enumerator
       t.string  :title
-      t.string  :description
+      t.text    :description
       t.integer :participant_count
     end
     add_column :milestones, :nct_id, :string, references: :studies
@@ -74,7 +74,7 @@ class CreateResults < ActiveRecord::Migration
       t.string  :measure
       t.string  :time_frame
       t.string  :safety_issue
-      t.string  :population
+      t.text    :population
       t.integer :participant_count
     end
     add_column :actual_outcomes, :nct_id, :string, references: :studies
@@ -92,7 +92,7 @@ class CreateResults < ActiveRecord::Migration
       t.string  :upper_limit
       t.string  :dispersion
       t.string  :spread
-      t.string  :measure_description
+      t.text    :measure_description
    end
     add_column :outcome_measures, :nct_id, :string, references: :studies
     add_column :outcome_measures, :actual_outcome_id, :integer, references: :actual_outcomes
@@ -102,7 +102,7 @@ class CreateResults < ActiveRecord::Migration
       t.integer :ctgov_group_enumerator
       t.string  :title
       t.string  :non_inferiority
-      t.string  :non_inferiority_description
+      t.text    :non_inferiority_description
       t.string  :p_value
       t.string  :param_type
       t.string  :param_value
@@ -123,8 +123,8 @@ class CreateResults < ActiveRecord::Migration
       t.string   :ctgov_group_id
       t.integer  :ctgov_group_enumerator
       t.string   :group_title
-      t.string   :group_description
-      t.string   :description
+      t.text     :group_description
+      t.text     :description
       t.string   :time_frame
       t.string   :category
       t.string   :event_type
@@ -149,7 +149,7 @@ class CreateResults < ActiveRecord::Migration
       t.integer :ctgov_group_enumerator
       t.string  :group_type
       t.string  :title
-      t.string  :description
+      t.text    :description
       t.integer :participant_count
     end
     add_column :actual_groups, :nct_id, :string, references: :studies

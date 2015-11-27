@@ -20,12 +20,13 @@ class CreateStudies < ActiveRecord::Migration
       t.string :completion_date_str
       t.string :first_received_results_date_str
       t.string :download_date_str
+
       t.string :completion_date_type
       t.string :primary_completion_date_type
       t.string :org_study_id
       t.string :secondary_id
-      t.string :brief_title
-      t.string :official_title
+      t.text   :brief_title
+      t.text   :official_title
       t.string :overall_status
       t.string :phase
       t.string :target_duration
@@ -37,7 +38,7 @@ class CreateStudies < ActiveRecord::Migration
       t.string :source
 
       t.string :biospec_retention
-      t.string :biospec_description
+      t.text   :biospec_description
       t.string :study_rank
       t.string :limitations_and_caveats
       t.string :delivery_mechanism
@@ -79,7 +80,7 @@ class CreateStudies < ActiveRecord::Migration
       t.integer :ctgov_group_enumerator
       t.string  :title
       t.string  :group_type
-      t.string  :description
+      t.text    :description
       t.timestamps null: false
     end
     add_column :expected_groups, :nct_id, :string, references: :studies
@@ -96,7 +97,7 @@ class CreateStudies < ActiveRecord::Migration
     create_table :interventions do |t|
       t.string  :intervention_type
       t.string  :name
-      t.string  :description
+      t.text    :description
       t.timestamps null: false
     end
     add_column :interventions, :nct_id, :string, references: :studies
@@ -157,7 +158,7 @@ class CreateStudies < ActiveRecord::Migration
 		add_index :expected_outcomes, :nct_id
 
     create_table :study_references do |t|
-      t.string :citation
+      t.text   :citation
       t.string :pmid
       t.string :reference_type
     end

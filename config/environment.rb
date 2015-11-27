@@ -3,5 +3,3 @@ require File.expand_path('../application', __FILE__)
 
 # Initialize the Rails application.
 Rails.application.initialize!
-require 'active_record/connection_adapters/mysql2_adapter'
-

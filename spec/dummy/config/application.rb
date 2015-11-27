@@ -6,6 +6,7 @@ Bundler.require(*Rails.groups)
 
 module Dummy
   class Application < Rails::Application
+    require 'active_record/connection_adapters/mysql2_adapter'
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

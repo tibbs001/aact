@@ -6,8 +6,9 @@ source 'https://rubygems.org'
 gemspec
 gem 'rails', '4.2.4'
 # Postgres database gem
-gem 'pg'
+#gem 'pg'
 gem 'sqlite3'
+gem 'mysql2', '~> 0.3.18'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -46,6 +47,7 @@ gem 'backbone-rails'
 gem 'nokogiri'
 gem 'rspec-rails'
 gem 'factory_girl_rails'
+gem 'rubyzip', '>= 1.0.0' # will load new rubyzip version
 
 #gem 'activerecord-oracle_enhanced-adapter', github: 'rsim/oracle-enhanced', branch: 'rails4'
 #gem 'activerecord-oracle_enhanced-adapter', github: 'OIT-ADS-Web/oracle-enhanced', branch: "rescue-close"
