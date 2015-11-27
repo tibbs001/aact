@@ -207,11 +207,7 @@ module Aact
       expect(outcome.population).to eq('All randomized participants (time-to-event)')
       expect(outcome.description).to eq('Number of participants with disease progression to a new WHO stage 4 event or death, to be analysed using time-to-event methods')
       expect(outcome.group_description).to eq('Participants were examined by a doctor and had routine full blood count with white cell differential, lymphocyte subsets (CD4, CD8), biochemistry tests (bilirubin, urea, creatinine, aspartate aminotransferase, alanine aminotransferase) at screening, randomisation (lymphocytes only), weeks 4, 8, and 12, then every 12 weeks. Screening results were used to assess eligibility. All subsequent results at and after randomisation were only returned if requested for clinical management (authorised by centre project leaders); haemoglobin results at week 8 were automatically returned on the basis of early anaemia in a previous adult trial as were grade 4 laboratory toxicities (protocol safety criteria). Total lymphocytes and CD4 tests were never returned for CDM participants, but for all children other investigations (including tests from the routine panels) could be requested and concomitant drugs prescribed, as clinically indicated at extra patient-initiated or scheduled visits.')
-      puts "====================================="
-      puts outcome.inspect
-      puts "====================================="
       outcome.measures.each{|x| puts x.inspect}
-      puts "====================================="
       expect(outcome.measures.size).to eq(2)
 
       num_participants=(outcome.measures.select{|m|m.title=='Number of Participants'})
