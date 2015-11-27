@@ -18,9 +18,40 @@ class CreateAdminTables < ActiveRecord::Migration
       t.string :nct_id
       t.string :event_type
       t.string :status
-      t.string :description
+      t.text   :description
       t.timestamps null: false
     end
 
+    create_table :search_results do |t|
+      t.string  :job_id
+      t.integer :order
+      t.integer :score
+      t.string  :nct_id
+      t.text    :title
+      t.string  :status
+      t.string  :study_results
+      t.text    :conditions
+      t.text    :interventions
+      t.string  :sponsors
+      t.string  :gender
+      t.string  :age_groups
+      t.string  :phases
+      t.integer :enrollment
+      t.string  :funded_by
+      t.string  :study_types
+      t.text    :study_designs
+      t.string  :other_ids
+      t.date    :first_received_date
+      t.date    :start_date
+      t.date    :completion_date
+      t.date    :last_updated_date
+      t.date    :last_verified_date
+      t.string  :results_first_received_date
+      t.string  :acronym
+      t.date    :primary_completion_date
+      t.string  :outcome_measures
+      t.string  :sites
+      t.timestamps null: false
+    end
   end
 end
