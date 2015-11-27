@@ -1,7 +1,6 @@
 module Aact
 	class SearchResult < StudyRelationship
 
-	  establish_connection "aact_#{Rails.env}".to_sym if Rails.env != 'test'
 		self.table_name='search_results'
 
 		def attribs

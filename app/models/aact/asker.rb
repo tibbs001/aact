@@ -65,8 +65,7 @@ module Aact
 			nct_id=opts[:xml].xpath('nct_id').inner_html
       e=log_event({:nct_id=>nct_id,:event_type=>'search_result',:status=>'active'})
 			s=SearchResult.create_from(opts)
-			e.status='complete'
-			e.save!
+			complete_event(e)
 			return s
 		end
 
@@ -76,8 +75,7 @@ module Aact
 			  attribs=get_study(nct_id).attribs
 			  study=Aact::Study.new.create_from(attribs)
 			  existing_nct_ids << nct_id
-			  e.status='complete'
-			  e.save!
+				complete_event(e)
 			  return study
 			rescue => error
 				msg="Failed: #{error}"
@@ -94,6 +92,11 @@ module Aact
 			e.save!
 			e
 		end
+
+		def complete_event(event)
+			event.status='complete'
+			event.save!
+    end
 
 		def self.get(nct_id)
 			self.new.get_study(nct_id)

@@ -4,7 +4,7 @@ module Aact
 	class StudyRelationship < ActiveRecord::Base
 
 		self.abstract_class = true;
-		establish_connection "aact_#{Rails.env}".to_sym
+	  establish_connection "aact_#{Rails.env}".to_sym if Rails.env != 'test'
 		attr_accessor :xml, :wrapper1_xml, :is_new
 		belongs_to :study, :foreign_key=> 'nct_id'
 
