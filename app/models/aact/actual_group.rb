@@ -19,7 +19,7 @@ module Aact
 		end
 
 		##############################################################################################
-		#
+
 		def milestones
 			@milesones ||=Aact::Milestone.where("nct_id=? and ctgov_group_enumerator=?",nct_id,ctgov_group_enumerator)
 		end
