@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 # Bundler will treat runtime dependencies like base dependencies, and
 # development dependencies will be added by default to the :development group.
 gemspec
+gem 'zip'
 gem 'rails', '4.2.4'
 # Postgres database gem
 gem 'pg'
