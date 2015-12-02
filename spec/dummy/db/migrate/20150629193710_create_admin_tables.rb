@@ -30,5 +30,6 @@ class CreateAdminTables < ActiveRecord::Migration
       t.decimal :score, :precision => 6, :scale => 6
       t.timestamps null: false
     end
+
   end
 end

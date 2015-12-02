@@ -16,8 +16,32 @@ module Aact
 			self.new.create_all_studies(opts)
 		end
 
-		def self.search_for_studies(opts={})
-		  self.new.search_for_studies(opts)
+		def self.brief_search(opts={})
+		  self.new.brief_search(opts)
+		end
+
+		def self.full_search(opts={})
+		  self.new.full_search(opts)
+		end
+
+		def brief_search(opts)
+			if opts.class==String
+				term=opts
+			  @should_refresh=true
+			else
+			  term=opts[:term]
+			  @should_refresh=opts[:should_refresh]
+			end
+			search_datestamp=Time.now
+			query_url="https://clinicaltrials.gov/search?term=#{term}&displayxml=true"
+			nodes = Nokogiri::XML(call_to_ctgov(query_url)).xpath('//clinical_study')
+			nodes.each{|node|
+				nct_id=node.xpath('nct_id').inner_html
+				order=node.xpath('order').inner_html
+				score=node.xpath('score').inner_html
+				create_study(nct_id)
+				create_search_result({:nct_id=>nct_id,:search_term=>term,:search_datestamp=>search_datestamp,:order=>order,:score=>score})
+			}
 		end
 
 		def full_search(opts)
@@ -44,25 +68,6 @@ module Aact
 			nct_ids
 		end
 
-		def brief_search(opts)
-			if opts.class==String
-				term=opts
-			  @should_refresh=true
-			else
-			  term=opts[:term]
-			  @should_refresh=opts[:should_refresh]
-			end
-			search_datestamp=Time.now
-			query_url="https://clinicaltrials.gov/search?term=#{term}&displayxml=true"
-			nodes = Nokogiri::XML(call_to_ctgov(query_url)).xpath('//clinical_study')
-			nodes.each{|node|
-				nct_id=node.xpath('nct_id').inner_html
-				order=node.xpath('order').inner_html
-				score=node.xpath('score').inner_html
-				create_study(nct_id)
-				create_search_result({:nct_id=>nct_id,:search_term=>term,:search_datestamp=>search_datestamp,:order=>order,:score=>score})
-			}
-		end
 
 		def create_all_studies(opts={})
 			@should_refresh=opts[:should_refresh]
