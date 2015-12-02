@@ -175,7 +175,6 @@ GEM
       rspec-support (~> 3.3.0)
     rspec-support (3.3.0)
     ruby-graphviz (1.2.2)
-    rubyzip (1.1.7)
     sass (3.4.18)
     sass-rails (5.0.3)
       railties (>= 4.0.0, < 5.0)
@@ -212,6 +211,7 @@ GEM
       binding_of_caller (>= 0.7.2)
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
+    zip (2.0.2)
 
 PLATFORMS
   ruby
@@ -235,13 +235,13 @@ DEPENDENCIES
   rails (= 4.2.4)
   rails-erd
   rspec-rails
-  rubyzip (>= 1.0.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   sqlite3
   turbolinks
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
+  zip
 
 BUNDLED WITH
    1.10.6

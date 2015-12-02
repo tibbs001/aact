@@ -245,9 +245,9 @@ ActiveRecord::Schema.define(version: 20150629193710) do
     t.string   "nct_id",      limit: 255
     t.string   "event_type",  limit: 255
     t.string   "status",      limit: 255
-    t.text     "description", limit: 65535
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.string   "description", limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "location_countries", force: :cascade do |t|
@@ -387,36 +387,13 @@ ActiveRecord::Schema.define(version: 20150629193710) do
   end
 
   create_table "search_results", force: :cascade do |t|
-    t.string   "job_id",                      limit: 255
-    t.integer  "order",                       limit: 4
-    t.integer  "score",                       limit: 4
-    t.string   "nct_id",                      limit: 255
-    t.text     "title",                       limit: 65535
-    t.string   "status",                      limit: 255
-    t.string   "study_results",               limit: 255
-    t.text     "conditions",                  limit: 65535
-    t.text     "interventions",               limit: 65535
-    t.string   "sponsors",                    limit: 255
-    t.string   "gender",                      limit: 255
-    t.string   "age_groups",                  limit: 255
-    t.string   "phases",                      limit: 255
-    t.integer  "enrollment",                  limit: 4
-    t.string   "funded_by",                   limit: 255
-    t.string   "study_types",                 limit: 255
-    t.text     "study_designs",               limit: 65535
-    t.string   "other_ids",                   limit: 255
-    t.date     "first_received_date"
-    t.date     "start_date"
-    t.date     "completion_date"
-    t.date     "last_updated_date"
-    t.date     "last_verified_date"
-    t.string   "results_first_received_date", limit: 255
-    t.string   "acronym",                     limit: 255
-    t.date     "primary_completion_date"
-    t.string   "outcome_measures",            limit: 255
-    t.string   "sites",                       limit: 255
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
+    t.date     "search_datestamp"
+    t.string   "search_term",      limit: 255
+    t.string   "nct_id",           limit: 255
+    t.integer  "order",            limit: 4
+    t.decimal  "score",                        precision: 6, scale: 6
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
   end
 
   create_table "secondary_ids", force: :cascade do |t|

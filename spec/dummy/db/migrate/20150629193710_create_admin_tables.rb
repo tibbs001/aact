@@ -22,5 +22,14 @@ class CreateAdminTables < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-  end
+    create_table :search_results do |t|
+      t.date    :search_datestamp
+      t.string  :search_term
+      t.string  :nct_id
+      t.integer :order
+      t.decimal :score, :precision => 6, :scale => 6
+      t.timestamps null: false
+    end
+
+	end
 end

@@ -4,11 +4,11 @@ source 'https://rubygems.org'
 # Bundler will treat runtime dependencies like base dependencies, and
 # development dependencies will be added by default to the :development group.
 gemspec
+gem 'zip'
 gem 'rails', '4.2.4'
-# Postgres database gem
-#gem 'pg'
-gem 'sqlite3'
+# MySQL database gem
 gem 'mysql2', '~> 0.3.18'
+gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -47,7 +47,6 @@ gem 'backbone-rails'
 gem 'nokogiri'
 gem 'rspec-rails'
 gem 'factory_girl_rails'
-gem 'rubyzip', '>= 1.0.0' # will load new rubyzip version
 
 #gem 'activerecord-oracle_enhanced-adapter', github: 'rsim/oracle-enhanced', branch: 'rails4'
 #gem 'activerecord-oracle_enhanced-adapter', github: 'OIT-ADS-Web/oracle-enhanced', branch: "rescue-close"
