@@ -44,6 +44,10 @@ module Aact
 			nct_ids
 		end
 
+		def self.brief_search(opts={})
+		  self.new.brief_search(opts)
+		end
+
 		def brief_search(opts)
 			if opts.class==String
 				term=opts
